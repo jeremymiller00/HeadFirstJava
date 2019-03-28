@@ -8,16 +8,23 @@ public class SimpleDotComTest {
 
         dot.setLocationCells(locations);
 
-        String guess = "2";
-
-        String result = dot.checkYourself(guess);
-
-        String testResult = "failed";
-
-        if (result.equals("hit")) {
-            testResult = "passed";
+        // test 2 as a guess
+        String guess2 = "2";
+        String result2 = dot.checkYourself(guess2);
+        String testResult2 = "failed";
+        if (result2.equals("hit")) {
+            testResult2 = "passed";
         }
+        System.out.println(testResult2);
 
-        System.out.println(testResult);
+        // test 1 as a guess
+        String guess1 = "2";
+        String result1 = dot.checkYourself(guess1);
+        String testResult1 = "failed";
+        if (result1.equals("hit")) {
+            testResult1 = "passed";
+        }
+        System.out.println(testResult1);
+
     }
 }
