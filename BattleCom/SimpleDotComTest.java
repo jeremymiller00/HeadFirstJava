@@ -4,7 +4,7 @@ public class SimpleDotComTest {
 
         SimpleDotCom dot = new SimpleDotCom();
 
-        int locations = {2,3,4};
+        int[] locations = {2,3,4};
 
         dot.setLocationCells(locations);
 
@@ -18,10 +18,10 @@ public class SimpleDotComTest {
         System.out.println(testResult2);
 
         // test 1 as a guess
-        String guess1 = "2";
+        String guess1 = "1";
         String result1 = dot.checkYourself(guess1);
         String testResult1 = "failed";
-        if (result1.equals("hit")) {
+        if (result1.equals("miss")) {
             testResult1 = "passed";
         }
         System.out.println(testResult1);
