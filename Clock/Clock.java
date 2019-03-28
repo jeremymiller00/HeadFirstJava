@@ -1,1 +1,5 @@
 // Clock
+
+class Clock {
+    
+}
