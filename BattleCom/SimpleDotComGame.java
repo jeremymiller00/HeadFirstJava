@@ -7,8 +7,10 @@ class SimpleDotComGame {
         int numOfGuesses;
         SimpleDotCom dotCom = new SimpleDotCom();
 
-        Random rand = new Random();
-        int start = rand.nextInt(5);
+        // Random rand = new Random();
+        // int start = rand.nextInt(5);
+        int start = (int) (Math.random() * 5); // cast to int
+
         int count = 0;
         int[] loc = new int[3];
         // populate location cells
