@@ -1,13 +1,19 @@
-import java.util.ArrayList;
+import java.util.*;
 
-class DotCom {
+public class DotCom {
+    // instance variables
     private ArrayList<String> locationCells;
-    // int numOfHits;
+    private String name;
 
-    String name;
+    public void setLocationCells(ArrayList<String> loc) {
+        locationCells = loc;
+    }
     
-    public String checkYourself(String userInput) {
-        
+    public void setName(String n) {
+        this.name=n;        
+    }
+
+    public String checkYourself(String userInput) {   
         String result = "miss";
         int index = locationCells.indexOf(userInput);
 
@@ -15,14 +21,11 @@ class DotCom {
             locationCells.remove(index);
             if (locationCells.isEmpty()) {
                 result = "kill";
+                System.out.println("Ouch! you sunk " + name " :(");
             } else {
                 result = "hit";
             }
         }
         return result;
-    } // close method
-
-    void setLocationCells(ArrayList<String> loc) {
-        locationCells = loc;
-    } // close method
-} // close class
+    }
+}
