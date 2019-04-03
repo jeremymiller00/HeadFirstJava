@@ -5,7 +5,17 @@ import java.util.Scanner;
 class DotComGame {
 
     public static void setUpGame() { 
-        // instatiate dotcoms with names and locations
+        // create three dotcom objects and name them
+        DotCom pets = new DotCom();
+        pets.name = "Pets.com";
+        dotComsList.add(pets);
+        DotCom plants = new DotCom();
+        plants.name = "Plants.com";
+        dotComsList.add(plants);
+        DotCom puddles = new DotCom();
+        puddles.name = "Puddles.com";
+        dotComsList.add(puddles);
+        
         // display instructions to the user
     }
 
@@ -31,6 +41,20 @@ class DotComGame {
 
         // below here is the old way
         DotCom dotCom = new DotCom();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         int start = (int) (Math.random() * 5); // cast to int
 

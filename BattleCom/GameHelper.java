@@ -1,6 +1,15 @@
 import java.io.*;
+import java.util.*;
 
 public class GameHelper {
+
+    public static final String alphabet = "abcdefg";
+    private int gridLength = 7;
+    private int gridSize = 49;
+    private int[] grid = new int[gridSize];
+    private int comCount = 0;
+
+
     public String getUserInput(String prompt) {
         String inputLine = null;
         System.out.print(prompt + " ");
