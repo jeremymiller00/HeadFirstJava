@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-import com.sun.openpisces.AlphaConsumer;
-
 public class GameHelper {
 
     public static final String alphabet = "abcdefg";
@@ -28,8 +26,8 @@ public class GameHelper {
     }
 
     public ArrayList<String> placeDotCom(int comSize) {
-        ArrayList<String> alpaCells = new ArrayList<String>();
-        String[] alphacoords = new String [comSize]; // holds coordinates (i.e. 'f6')
+        ArrayList<String> alphaCells = new ArrayList<String>();
+        String[] alphaCoords = new String [comSize]; // holds coordinates (i.e. 'f6')
         String temp = null;                         // temporary string for concat
         int[] coords = new int[comSize];            // current candidate coords
         int attempts = 0;                           // current attempts counter
