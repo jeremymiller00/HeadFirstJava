@@ -19,8 +19,13 @@ public class MiniMiniMusicApp {
             Track track = seq.createTrack();
 
             // put some midi events into the track
+            ShortMessage changeInst = new ShortMessage();
+            changeInst.setMessage(192, 1, 100, 0);
+            MidiEvent changeInsEvent = new MidiEvent(changeInst, 1);
+            track.add(changeInsEvent);
+
             ShortMessage a = new ShortMessage();
-            a.setMessage(144, 1, 44, 100);
+            a.setMessage(144, 1, 44, 100); // message type, channel (instrument), note to play, velocity
             MidiEvent noteOn = new MidiEvent(a, 1);
             track.add(noteOn);
 
