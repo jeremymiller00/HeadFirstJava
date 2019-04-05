@@ -11,5 +11,35 @@ public class MiniMusicCmdLine {
             mini.play(instrument, note);
         }
     }
-    
+    public void play(int instrument, int note) {
+        try {
+            Sequencer player = MidiSystem.getSequencer();
+            player.open();
+            Sequence seq = new Sequence(Sequence.PPQ, 4);
+            Track track = seq.createTrack();
+
+            MidiEvent event = null;
+
+            ShortMessage first = new ShortMessage();
+            first.setMessage(192, 1, instrument, 0); // message type, channel, note to play, velocity
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144, 1, note, 100); // message type, channel, note to play, velocity
+            MidiEvent noteOn = new MidiEvent(a, 1);
+            track.add(noteOn);
+
+            ShortMessage first = new ShortMessage();
+            b.setMessage(128, 1, note, 0); // message type, channel, note to play, velocity
+            MidiEvent noteOff = new MidiEvent(b, 1);
+            track.add(noteOff);
+
+            player.setSequence(seq);
+            player.start();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
