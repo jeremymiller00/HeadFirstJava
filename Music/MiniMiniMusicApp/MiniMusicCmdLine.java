@@ -1,7 +1,7 @@
 import javax.sound.midi.*;
 
 public class MiniMusicCmdLine {
-    public static void main(String[] Args) {
+    public static void main(String[] args) {
         MiniMusicCmdLine mini = new MiniMusicCmdLine();
         if (args.length < 2) {
             System.out.println("Don't forget the instrument and note args");
@@ -30,7 +30,7 @@ public class MiniMusicCmdLine {
             MidiEvent noteOn = new MidiEvent(a, 1);
             track.add(noteOn);
 
-            ShortMessage first = new ShortMessage();
+            ShortMessage b = new ShortMessage();
             b.setMessage(128, 1, note, 0); // message type, channel, note to play, velocity
             MidiEvent noteOff = new MidiEvent(b, 1);
             track.add(noteOff);
