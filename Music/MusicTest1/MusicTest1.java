@@ -7,6 +7,7 @@ public class MusicTest1 {
             System.out.println("We got a sequencer");
         } catch(MidiUnavailableException ex) {
             System.out.println("Bummer");
+            ex.printStackTrace();
         }
     }
 
