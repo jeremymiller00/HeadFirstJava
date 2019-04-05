@@ -17,4 +17,9 @@ class V3Radiator extends V2Radiator {
   }
 }
 
+class RetentionBot {
+  RetentionBot(ArrayList rlist) {
+    rlist.add(new simUnit("Retention"));
+  }
+}
 
