@@ -1,12 +1,3 @@
-class StaticSuper {
-    static {
-        System.out.println("super static block");
-        }
-    
-    StaticSuper() {
-        System.out.println("super constructor");
-    }
-}
 public class StaticTests extends StaticSuper {
     static int rand;
 
@@ -20,8 +11,18 @@ public class StaticTests extends StaticSuper {
     }
 
     public static void main(String[] args) {
+        // the two static block get called here, before anything else
         System.out.println("in main");
         StaticTests st = new StaticTests();
     }
 }
 
+class StaticSuper {
+    static { // this gets called only when the Class is initialized (the first instance is created)
+        System.out.println("super static block");
+        }
+    
+    StaticSuper() {
+        System.out.println("super constructor");
+    }
+}
