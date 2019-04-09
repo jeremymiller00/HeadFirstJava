@@ -3,7 +3,7 @@ import javax.swing.*;
 public class SimpleGui1 {
     public static void main(String[] args) {
         // make a frame
-        JFrame frame = new Jrame();
+        JFrame frame = new JFrame();
         // make a button, pass text to constructor
         JButton button = new JButton("click me");
 
