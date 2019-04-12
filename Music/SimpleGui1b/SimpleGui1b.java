@@ -7,7 +7,9 @@ public class SimpleGui1b implements ActionListener {
 
     public static void main (String[] args) {
         SimpleGui1b gui = new SimpleGui1b();
-        gui.go();
+        // gui.go();
+        MyDrawPanel drawing = new MyDrawPanel();
+        drawing.paintComponent(g);
     }
 
     /**
