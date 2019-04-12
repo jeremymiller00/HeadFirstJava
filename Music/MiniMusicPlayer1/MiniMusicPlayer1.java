@@ -28,6 +28,15 @@ public class MiniMusicPlayer1 {
         } catch (Exception e) {e.printStackTrace();}
     } // close main
 
+    /**
+     * Generic event method to simplify code in main
+     * @param comd start / stop note (or other command)
+     * @param chan instrument
+     * @param one start byte
+     * @param two end byte
+     * @param tick timestamp
+     * @return event
+     */
     public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {
         MidiEvent event = null;
 
