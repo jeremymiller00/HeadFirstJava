@@ -69,9 +69,9 @@ public class MiniMusicPlayer2 implements ControllerEventListener {
         try {
             ShortMessage a = new ShortMessage();
             a.setMessage(cmd, chan, one, two);
-            event = new MidiEvent(a, tick)
+            event = new MidiEvent(a, tick);
         } catch (Exception e) {e.printStackTrace();}
-        return event
+        return event;
     } // close makeEvent method
 
 } // close class
