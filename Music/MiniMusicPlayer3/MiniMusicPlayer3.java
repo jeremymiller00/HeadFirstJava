@@ -77,7 +77,7 @@ public class MiniMusicPlayer3 {
 
         public void paintComponent(Graphics g) {
             if (msg) {
-                Graphics2D g2 = (Graphics2d) g;
+                Graphics2D g2 = (Graphics2D)g;
 
                 int r = (int) (Math.random() * 250);
                 int gr = (int) (Math.random() * 250);
