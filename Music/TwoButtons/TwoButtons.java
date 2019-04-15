@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javafx.scene.paint.Color;
+
 
 public class TwoButtons {
 
