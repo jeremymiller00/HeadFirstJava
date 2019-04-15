@@ -1,12 +1,6 @@
-import java.spound.midi.*;
+import javax.sound.midi.*;
 import java.io.*;
 
-import javax.sound.midi.ControllerEventListener;
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.ShortMessage;
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,7 +13,7 @@ public class MiniMusicPlayer3 {
         mini.go();
     }
 
-    public void setUpGui(); {
+    public void setUpGui() {
         ml = new MyDrawPanel();
         f.setContentPane(ml);
         f.setBounds(30,30,300,300);
@@ -67,7 +61,7 @@ public class MiniMusicPlayer3 {
         try {
             ShortMessage a = new ShortMessage();
             a.setMessage(comd, chan, one, two);
-            event = new MidiEvent(a, tick)
+            event = new MidiEvent(a, tick);
         } catch (Exception e) {e.printStackTrace();}
         return event;
     }
@@ -83,19 +77,19 @@ public class MiniMusicPlayer3 {
 
         public void paintComponent(Graphics g) {
             if (msg) {
-                Graphics g2 = (Grpahics2d) g;
+                Graphics2D g2 = (Graphics2d) g;
 
-                int r = (int) Math.random() * 250);
-                int gr = (int) Math.random() * 250);
-                int b = (int) Math.random() * 250);
+                int r = (int) (Math.random() * 250);
+                int gr = (int) (Math.random() * 250);
+                int b = (int) (Math.random() * 250);
                 
-                g.setColor(bew Color(r, gr, b));
+                g.setColor(new Color(r, gr, b));
 
                 int ht = (int) ((Math.random() * 120) + 10);
                 int width = (int) ((Math.random() * 120) + 10);
                 
                 int x = (int) ((Math.random() * 40) + 10);
-                int x = (int) ((Math.random() * 40) + 10);
+                int y = (int) ((Math.random() * 40) + 10);
                 
                 g.fillRect(x, y, ht, width);
                 msg=false;
