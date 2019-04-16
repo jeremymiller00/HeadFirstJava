@@ -21,7 +21,7 @@ public class QuizCardPlayer {
 
     public static void main(String[] args) {
         QuizCardPlayer reader = new QuizCardPlayer();
-        reader.go()
+        reader.go();
     }
 
     /**

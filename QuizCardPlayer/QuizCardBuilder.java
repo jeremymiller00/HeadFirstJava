@@ -26,7 +26,7 @@ public class QuizCardBuilder {
 
     public static void main(String[] args) {
         QuizCardBuilder builder = new QuizCardBuilder();
-        builder.go()
+        builder.go();
     }
 
     /**
