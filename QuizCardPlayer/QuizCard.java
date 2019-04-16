@@ -17,5 +17,4 @@ public class QuizCard {
         return this.answer;
     }
 
-
 }
