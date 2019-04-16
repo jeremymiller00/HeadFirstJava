@@ -1,27 +1,15 @@
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.IOError;
-import java.io.IOException;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import javax.swing.*;
+import java.util.*;
 
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-
-import sun.java2d.pipe.BufferedBufImgOps;
 
 public class QuizCardBuilder {
 
     private JTextArea question;
     private JTextArea answer;
-    private ArrayList<QuizCard> cardlist;
+    private ArrayList<QuizCard> cardList;
     private JFrame frame;
 
     public static void main(String[] args) {
@@ -85,7 +73,10 @@ public class QuizCardBuilder {
         frame.setVisible(true);
     }
 
-    private class NextClassListener implements ActionListener { // inner class
+    /**
+     * Inner class to add a new card to the set
+     */
+    private class NextCardListener implements ActionListener { // inner class
         public void actionPerformed(ActionEvent ev) {
             QuizCard card = new QuizCard(question.getText(), answer.getText());
             cardList.add(card);
@@ -93,6 +84,9 @@ public class QuizCardBuilder {
         }
     }
 
+    /**
+     * Inner class to save a card set
+     */
     private class SaveMenuListener implements ActionListener { // inner class
         public void actionPerformed(ActionEvent ev) {
             QuizCard card = new QuizCard(question.getText(), answer.getText());
@@ -102,13 +96,17 @@ public class QuizCardBuilder {
             // FileChooser makes this easier
             JFileChooser fileSave = new JFileChooser();
             fileSave.showSaveDialog(frame);
-            saveFrame(fileSave.getSelectedFile());
+            saveFile(fileSave.getSelectedFile());
         }
     }
 
+    /**
+     * Inner class to create a new card set
+     */
     private class NewMenuListener implements ActionListener { // inner class
         public void actionPerformed(ActionEvent ev) {
-            QuizCard card = new QuizCard();
+            cardList.clear();
+            clearCard();
         }
     }
 
@@ -118,6 +116,10 @@ public class QuizCardBuilder {
         question.requestFocus();
     }
 
+    /**
+     * Write out the card set to text file so that it can be loaded and used
+     * @param file
+     */
     private void saveFile(File file) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
