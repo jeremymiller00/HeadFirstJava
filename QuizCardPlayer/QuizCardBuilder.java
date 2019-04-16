@@ -1,11 +1,79 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+
 public class QuizCardBuilder {
 
+    private JTextArea question;
+    private JTextArea answer;
+    private ArrayList<QuizCard> cardlist;
+    private JFrame frame;
+
+    public static void main(String[] args) {
+        QuizCardBuilder builder = new QuizCardBuilder();
+        builder.go()
+    }
+
+    /**
+     * Build and display the gui
+     */
     public void go() {
-        // build and display gui
-        // make and register event listeners
+        frame = new JFrame("Quiz Card Builder");
+        JPanel mainPanel = new JPanel();
+        Font bigFont = new Font("sanserif", Font.BOLD, 24);
+        question = new JTextArea(6, 20);
+        question.setLineWrap(true);
+        question.setWrapStyleWord(true);
+        question.setFont(bigFont);
+
+        JScrollPane qScroller = new JScrollPane(question);
+        qScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        answer = new JTextArea(6, 20);
+        answer.setLineWrap(true);
+        answer.setWrapStyleWord(true);
+        answer.setFont(bigFont);
+
+        JScrollPane aScroller = new JScrollPane(answer);
+        aScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        aScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        JButton nextButton = new JButton("Next Card");
+
+        cardList = new ArrayList<QuizCard>();
+
+        JLabel qLabel = new JLabnel("Question");
+        JLabel aLabel = new JLabnel("Answer");
+
+        mainPanel.add(qLabel);
+        mainPanel.add(qScroller);
+        mainPanel.add(aLabel);
+        mainPanel.add(aScroller);
+        mainPanel.add(nextButton);
+        nextButton.addActionListener(new NextCardListener());
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem newMenuItem = new JMenuItem("New");
+        JMenuItem saveMenuItem = new JMenuItem("Save");
+        newMenuItem.addActionListener(new NewMenuListener());
+
+        saveMenuItem.addActionListener(new SaveMenuListener());
+        fileMenu.add(newMenuItem);
+        fileMenu.add(saveMenuItem);
+        menuBar.add(fileMenu);
+        frame.setJMenuBar(menuBar);
+        frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
+        frame.setSize(500, 600);
+        frame.setVisible(true);
     }
 
     private class NextClassListener implements ActionListener { // inner class
@@ -27,6 +95,8 @@ public class QuizCardBuilder {
 
     private class NewMenuListener implements ActionListener { // inner class
         public void actionPerformed(ActionEvent ev) {
+            QuizCard card = new QuizCard();
+
             // clear out the card list, clear out the text areas
             // trigered when user clicks 'New' from the file menu
             // means start a brand new set
