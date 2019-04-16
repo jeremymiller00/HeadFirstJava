@@ -1,13 +1,8 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JTextArea;
-
-import com.sun.webkit.ContextMenu.ShowContext;
+import java.util.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 
 public class QuizCardPlayer {
     
@@ -18,6 +13,7 @@ public class QuizCardPlayer {
     private JFrame frame;
     private JButton nextButton;
     private boolean isShowAnswer;
+    private QuizCard currentCard;
 
     public static void main(String[] args) {
         QuizCardPlayer reader = new QuizCardPlayer();
@@ -38,7 +34,7 @@ public class QuizCardPlayer {
         display.setLineWrap(true);
         display.setEditable(false);
 
-        JScrollPane qScroller = new JScrollPane(question);
+        JScrollPane qScroller = new JScrollPane(display);
         qScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         nextButton = new JButton("Show Question");
@@ -82,23 +78,23 @@ public class QuizCardPlayer {
         }
     }
 
+    /**
+     * File menu listener
+     */
     class OpenMenuListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
-            // bring up a file dialog box
-            // let the user navigate to and choose a card set to open
             JFileChooser fileOpen = new JFileChooser();
             fileOpen.showOpenDialog(frame);
             loadFile(fileOpen.getSelectedFile());
         }
     }
 
+    /**
+     * Load a card set from a text file created by QuizCardBuilder
+     * @param file
+     */
     private void loadFile(File file) {
-        // must build an ArrayList of cards by reading them from a text file
-        // called from the OpenMenuListener event handler
-        // reads the file one line at a time
-        // tells the makeCard() method to make a new card out of the new line
-        // (one line in the file holds bothe the question and the answer, sep = "/")
-        cardlist = new ArrayList<QuizCard>();
+        cardList = new ArrayList<QuizCard>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = null;
@@ -114,17 +110,20 @@ public class QuizCardPlayer {
         showNextCard();
     }
 
+    /**
+     * Make a new card object from a line of text file
+     * @param lineToParse
+     */
     private void makeCard(String lineToParse) {
-        // called by the loadFile method, takes a line from the text file
-        // and parses into two pieces: queston and answer
-        // creates a new QuizCard
-        // adds it to the ArrayList called CardList
         String[] result = lineToParse.split("/");
         QuizCard card = new QuizCard(result[0], result[1]);
         cardList.add(card);
         System.out.println("made a card");
     }
 
+    /**
+     * Display a card and answer button
+     */
     private void showNextCard() {
         currentCard = cardList.get(currentCardIndex);
         currentCardIndex++;
