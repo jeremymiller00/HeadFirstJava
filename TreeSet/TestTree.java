@@ -25,10 +25,10 @@ class Book implements Comparable {
     String title;
     // constructor
     public Book(String t) {
-        title = t;
+        this.title = t;
     }
 
-    // @Override
+    @Override
     public int compareTo(Object b) {
         Book book = (Book) b; // cast compared-to object to type Book
         return (title.compareTo(book.title));
